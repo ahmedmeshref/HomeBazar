@@ -5,23 +5,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-
 <div class="container">
     <div class="row">
         <section class="col-lg-4">
             <h2>Search</h2>
         </section>
-        <section class="col-lg-11">
+        <section class="col-lg-8">
             <h2>Advertisements</h2>
             @foreach (var item in Model.Advertisement)
             {
                 <div class="card" style="width: 18rem; display: inline-block; margin-bottom: 5px">
-                    <img class="card-img-top" src="https://via.placeholder.com/340x255" alt="Card image cap">
+                    <a asp-page="./Details" asp-route-id="@item.Id">
+                        <img class="card-img-top img-responsive" src="https://via.placeholder.com/340x255" alt="Card image cap">
+                    </a>
 
                     <div class="card-body">
                         <h5 class="card-title">@Html.DisplayFor(modelItem => item.Price) MFt @Html.DisplayFor(modelItem => item.AdvertisementType)</h5>
@@ -32,14 +28,13 @@
                             @Html.DisplayFor(modelItem => item.Address)
                         </p>
                         <p class="card-text">
-                            @Html.DisplayFor(modelItem => item.Room) + @Html.DisplayFor(modelItem => item.HalfRoom) rooms
+                            @Html.DisplayFor(modelItem => item.Room) + @Html.DisplayFor(modelItem => item.HalfRoom) 
                         </p>
                         <p class="card-text">
                              Built Date: @Html.DisplayFor(modelItem => item.BuildDate)
                         </p>
                         <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
-                        <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.Id">Details</a>
-                        <a class="btn btn-primary" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
                     </div>
                 </div>
             }
