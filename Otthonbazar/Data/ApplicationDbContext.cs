@@ -42,7 +42,6 @@ namespace Otthonbazar.Data
     public class Advertisement
     {
         public int Id { get; set; }
-        [StringLength(4, MinimumLength = 4)]
         public int CityId { get; set; }
         public AdvertisementType AdvertisementType { get; set; }
         [Required]
